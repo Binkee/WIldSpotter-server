@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 
 const UserModel = require('../models/User.model');
 
-router.post('/', (req, res)=> {
+router.post('/signup', (req, res)=> {
   const {username, email, password} = req.body;
 
 
@@ -31,14 +31,11 @@ if (!myPassRegex.test(password)) {
   });
   return;  
 }
-
-})
-
 // NOTE: We have used the Sync methods here. 
     // creating a salt 
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(password, salt);
-    UserModel.create({name: username, email, passwordHash: hash})
+    UserModel.create({username, email, passwordHash: hash})
       .then((user) => {
         // ensuring that we don't share the hash as well with the user
         user.passwordHash = "***";
@@ -58,6 +55,9 @@ if (!myPassRegex.test(password)) {
           });
         }
       })
+})
+
+
 
       // will handle all POST requests to http:localhost:5005/api/signin
     router.post('/signin', (req, res) => {
