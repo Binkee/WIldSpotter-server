@@ -15,9 +15,7 @@ const app = express();
 require('./config')(app);
 
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const mongoose= require('mongoose')
- 
+const MongoStore = require('connect-mongo').default;
 app.use(session({
     secret: 'NotMyAge',
     saveUninitialized: false, 
@@ -26,11 +24,10 @@ app.use(session({
       maxAge: 1000*60*60*24// is in milliseconds.  expiring in 1 day
     },
     store: new MongoStore({
-      mongooseConnection: mongoose.connection,
+      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/ReactTodos",
       ttl: 60*60*24, // is in seconds. expiring in 1 day
     })
 }));
-
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controled from the routes/index.js
 const allRoutes = require('./routes');
