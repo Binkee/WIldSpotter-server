@@ -30,8 +30,8 @@ if (!myPassRegex.test(password)) {
     errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet'
   });
   return;  
-}*/
-
+}
+*/
 
 // NOTE: We have used the Sync methods here. 
     // creating a salt 
@@ -66,7 +66,7 @@ if (!myPassRegex.test(password)) {
     const {email, password } = req.body;
 
     // -----SERVER SIDE VALIDATION ----------
-    
+   /* 
     if ( !email || !password) {
         res.status(500).json({
             error: 'Please enter Username. email and password',
@@ -80,7 +80,7 @@ if (!myPassRegex.test(password)) {
         })
         return;  
     }
-    
+    */
   
     // Find if the user exists in the database 
     UserModel.findOne({email})
@@ -118,7 +118,6 @@ if (!myPassRegex.test(password)) {
         })
         return;  
       });
-  
 });
  
 // will handle all POST requests to http:localhost:5005/api/logout
