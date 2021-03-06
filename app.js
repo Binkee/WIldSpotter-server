@@ -36,6 +36,11 @@ app.use('/api', allRoutes);
 const authRoutes = require('./routes/auth.routes');
 app.use('/api', authRoutes)
 
+const animalRoutes = require('./routes/animal.routes');
+app.use('/api', animalRoutes)
+
+const locationRoutes = require('./routes/location.routes');
+app.use('/api', locationRoutes)
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 

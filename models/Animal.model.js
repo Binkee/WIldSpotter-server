@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const animalSchema = new mongoose.Schema({
  animal: {
    type: String,
-   enum: ['Moose', 'Bear', 'Bison', 'Lynx', 'Wolf']
+   enum: ['moose', 'bear', 'bison', 'lynx', 'wolf']
  },
  userId: {
    type: mongoose.Schema.Types.ObjectId,

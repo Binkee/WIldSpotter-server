@@ -1,12 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
-
+const AnimalModel = require('../models/Animal.model');
 const UserModel = require('../models/User.model');
 
 router.post('/signup', (req, res)=> {
   const {username, email, password} = req.body;
-
 
   // Server side Validation
 
@@ -58,6 +57,7 @@ if (!myPassRegex.test(password)) {
         }
       })
 })
+
 
 
 
