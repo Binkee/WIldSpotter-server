@@ -9,10 +9,13 @@ const animalSchema = new mongoose.Schema({
    type: mongoose.Schema.Types.ObjectId,
    ref: "user"
  },
-  location: String,
+  location: Array,
   description: String,
   image: String
-})
+  
+},
+ {timestamps:true}
+)
 
 
 

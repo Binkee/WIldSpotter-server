@@ -41,6 +41,9 @@ app.use('/api', animalRoutes)
 
 const locationRoutes = require('./routes/location.routes');
 app.use('/api', locationRoutes)
+
+/*const cloudinaryRoutes = require('./routes/cloudinaryRoutes.js')
+app.use("/", cloudinaryRoutes);*/
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 
