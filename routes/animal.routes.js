@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs')
 const AnimalModel = require('../models/Animal.model')
 
 router.post('/add', (req, res)=> {
-  const {animal, location, description, image} = req.body;
+  const {animal, location, description, image, tourId} = req.body;
 
 
-AnimalModel.create({animal, location, description, image})
+AnimalModel.create({animal, location, description, image, tourId})
       .then((animal) => {
         // ensuring that we don't share the hash as well with the user
         res.status(200).json(animal);

@@ -9,7 +9,11 @@ const locationSchema = new mongoose.Schema({
    type: mongoose.Schema.Types.ObjectId,
    ref: "user"
   }
-});
+ 
+},
+{timestamps:true}
+);
+
 
 const LocationModel = mongoose.model("location", locationSchema);
 

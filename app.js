@@ -28,6 +28,10 @@ app.use(session({
       ttl: 60*60*24, // is in seconds. expiring in 1 day
     })
 }));
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, "public")));
+
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controled from the routes/index.js
 const allRoutes = require('./routes');
@@ -41,6 +45,10 @@ app.use('/api', animalRoutes)
 
 const locationRoutes = require('./routes/location.routes');
 app.use('/api', locationRoutes)
+
+app.use((req,res,next)=>{
+  res.sendFile(__dirname + "/public/index.html")
+})
 
 /*const cloudinaryRoutes = require('./routes/cloudinaryRoutes.js')
 app.use("/", cloudinaryRoutes);*/

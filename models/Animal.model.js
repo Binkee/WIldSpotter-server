@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+require("../models/User.model")
+require("../models/Location.model")
 const animalSchema = new mongoose.Schema({
  animal: {
    type: String,
@@ -9,6 +10,11 @@ const animalSchema = new mongoose.Schema({
    type: mongoose.Schema.Types.ObjectId,
    ref: "user"
  },
+
+ tourId: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "location"
+},
   location: Array,
   description: String,
   image: String
