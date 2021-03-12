@@ -3,11 +3,12 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const LocationModel = require('../models/Location.model')
 const AnimalModel = require('../models/Animal.model')
+
 router.post('/tours', (req, res)=> {
-  const {name, location, description,} = req.body;
+  const {name, description} = req.body;
 
 
-LocationModel.create({name, location, description,})
+LocationModel.create({name, description})
       .then((tour) => {
         // ensuring that we don't share the hash as well with the user
         res.status(200).json(tour);
@@ -21,7 +22,7 @@ LocationModel.create({name, location, description,})
         } 
         else {
           res.status(500).json({
-            errorMessage: 'Something went wrong! Oliver fucked Harry Potter!',
+            errorMessage: 'Something went wrong!',
             message: err,
           });
         }
@@ -40,6 +41,7 @@ LocationModel.create({name, location, description,})
             })
        }) 
     })
+    
     router.get('/tourDetail/:tourId', (req, res) => {
       let tourId = req.params.tourId
       LocationModel.findById(tourId)
